@@ -1,2 +1,47 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div class="container py-2">
+  <div class="row">
+    <div class="col">
+      <span class="h3">Messages</span>
+    </div>
+    <div class="col text-end">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendMessageModal">Send New Message</button>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id#</th>
+      <th scope="col">Message Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <th scope="row"><%= message.id %></th>
+        <td><%= message.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="modal fade" id="sendMessageModal" tabindex="-1" aria-labelledby="sendMessageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="sendMessageModalLabel">Send a New Message</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="container modal-body">
+        <%= form_with model: @message do |f| %>
+          <div class="row mx-4">
+            <%= f.text_area :body, size: "40x12" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
