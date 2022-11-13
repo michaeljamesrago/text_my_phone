@@ -4,7 +4,7 @@
       <span class="h3">Messages</span>
     </div>
     <div class="col text-end">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendMessageModal">Send New Message</button>
+      <%= link_to "Send New Message", new_message_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
@@ -24,24 +24,3 @@
     <% end %>
   </tbody>
 </table>
-<div class="modal fade" id="sendMessageModal" tabindex="-1" aria-labelledby="sendMessageModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="sendMessageModalLabel">Send a New Message</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="container modal-body">
-        <%= form_with model: @message do |f| %>
-          <div class="row mx-4">
-            <%= f.text_area :body, size: "40x12" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Send Message</button>
-      </div>
-    </div>
-  </div>
-</div>

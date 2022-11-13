@@ -1,2 +1,18 @@
-<h1>Messages#new</h1>
-<p>Find me in app/views/messages/new.html.erb</p>
+<%= form_with model: @message do |f| %>
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-12 col-sm-2">
+        <%= f.label :body, "Type Message:", class: "h6" %>
+      </div>
+      <div class="col-12 col-sm-10">
+        <%= f.text_area :body, size: "38x5" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-2"></div>
+      <div class="col-12 col-sm-10">
+        <%= f.submit "Send", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
