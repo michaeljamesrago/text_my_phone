@@ -18,4 +18,10 @@ class PhoneNumberTest < ActiveSupport::TestCase
   test "default verified should be false" do
     assert_not @phone_number.verified
   end
+
+  test "number should be unique" do
+    duplicate_phone_number = @phone_number.dup
+    @phone_number.save
+    assert_not duplicate_phone_number.valid?
+  end
 end
