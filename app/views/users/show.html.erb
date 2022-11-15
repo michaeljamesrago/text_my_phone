@@ -1,3 +1,25 @@
-<div>
-  <%= @user.name %>, <%= @user.email %>
+<div class="h6"><%= @user.name %> - <%= @user.email %></div>
+<div class="container py-2">
+  <div class="row">
+    <div class="col">
+      <div class="h3">Phone Numbers</div>
+    </div>
+    <div class="col text-end">
+      <%= link_to "Add New Number", "#", class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Verified</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <th scope="row">1(609)675-8240</th>
+        <td>N</td>
+      </tr>
+  </tbody>
+</table>
