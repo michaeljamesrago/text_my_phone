@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: "16096758240"
+  verified: false
+  user: :michael
+
+two:
+  number: "12158551292"
+  verified: false
+  user: :michael
