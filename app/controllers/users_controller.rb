@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorized_user, except: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -22,5 +24,18 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def authorized_user
+      if logged_in?
+        @user = User.find_by(id: params[:id])
+        unless !!@user && @user == current_user
+          flash[:danger] = "You are not authorized to view the requested page"
+          redirect_to current_user
+        end
+      else
+        flash[:danger] = "You must log in to view the requested page"
+        redirect_to login_path
+      end
     end
 end
