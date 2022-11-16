@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'phone_numbers/new'
-  root "messages#index"
+  root "sessions#new"
   get "sessions/new"
   get "/signup", to: "users#new"
   get "/login", to: "sessions#new"

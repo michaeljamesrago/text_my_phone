@@ -1,6 +1,7 @@
 class PhoneNumbersController < ApplicationController
   def new
     @user = User.find(params[:user_id])
+    @phone_number = current_user.phone_numbers.build
   end
 
   def create
@@ -9,7 +10,7 @@ class PhoneNumbersController < ApplicationController
       flash[:success] = "New number saved. Please verify."
       redirect_to current_user
     else
-      render 'phone_numbers/new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity
     end
   end
 
