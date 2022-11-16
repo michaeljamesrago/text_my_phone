@@ -1,0 +1,14 @@
+<%= form_with model: [@user, @user.phone_numbers.build] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="container my-3">
+    <div class="row align-items-start">
+      <%= f.label :number, "Number", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-4 mb-4">
+        <%= f.text_field :number, class: "form-control" %>
+      </div>
+    </div>
+    <div>
+      <%= f.submit "Add Phone Number", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
