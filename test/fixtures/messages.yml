@@ -1,7 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+message_one:
+  body: "This is message number one"
+  phone_number: :one
 
-one:
-  body: MyText
-
-two:
-  body: MyText
+message_two:
+  body: "Message number two"
+  phone_number: :one

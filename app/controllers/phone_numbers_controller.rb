@@ -16,6 +16,12 @@ class PhoneNumbersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:user_id])
+    @phone_number = PhoneNumber.find(params[:id])
+    @messages = @phone_number.messages
+  end
+
   private
 
     def phone_number_params

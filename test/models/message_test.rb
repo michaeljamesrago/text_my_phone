@@ -2,7 +2,7 @@ require "test_helper"
 
 class MessageTest < ActiveSupport::TestCase
   def setup
-    @message = Message.new(body: "This is a test message")
+    @message = phone_numbers(:one).messages.build(body: "This is a test message")
   end
 
   test "should be valid" do

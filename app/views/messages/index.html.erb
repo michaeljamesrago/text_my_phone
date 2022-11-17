@@ -4,7 +4,7 @@
       <span class="h3">Messages</span>
     </div>
     <div class="col text-end">
-      <%= link_to "Send New Message", new_message_path, class: "btn btn-primary" %>
+      <%= link_to "Send New Message", "#", class: "btn btn-primary" %>
     </div>
   </div>
 </div>
@@ -18,8 +18,8 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <th scope="row"><%= message.id %></th>
-        <td><%= message.body %></td>
+        <th scope="row"><%= "message.id" %></th>
+        <td><%= "message.body" %></td>
       </tr>
     <% end %>
   </tbody>

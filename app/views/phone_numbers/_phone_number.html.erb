@@ -1,4 +1,4 @@
 <tr>
-  <th scope="row"><%= phone_number.number %></th>
+  <th scope="row"><%= link_to phone_number.number, user_phone_number_path(@user, phone_number) %></th>
   <td><%= phone_number.verified %></td>
 </tr>
