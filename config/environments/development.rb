@@ -69,4 +69,10 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.sass.inline_source_maps = true
+
+  host = 'localhost:3000' # Don't use this literally; use your local host instead.
+  # Use this on the cloud IDE.
+  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  # Use this if developing on localhost.
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 end
