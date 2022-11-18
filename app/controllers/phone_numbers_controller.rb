@@ -18,8 +18,12 @@ class PhoneNumbersController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @phone_number = PhoneNumber.find(params[:id])
-    @messages = @phone_number.messages
+    if @phone_number = @user.phone_numbers.find_by(id: params[:id])
+      @messages = @phone_number.messages
+    else
+      flash[:warning] = "Either this phone number does not exist or you are not authorized to view it."
+      redirect_to @user
+    end
   end
 
   private
