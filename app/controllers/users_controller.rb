@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-  before_action :authorized_user, except: [:new, :create]
+  before_action :authorized_user, only: [:show]
+
+  def index
+    unless current_user.admin?
+      flash[:danger] = "You are not authorized to view this page"
+      redirect_to current_user
+    end
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -18,6 +26,12 @@ class UsersController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to users_path, status: :see_other
   end
 
   private

@@ -1,0 +1,7 @@
+<tr>
+  <th scope="row"><%= user.id %></th>
+  <td><%= user.email %></td>
+  <td><%= user.name %></td>
+  <td><%= link_to "Delete", user, data: { "turbo-method": :delete,
+  turbo_confirm: "You sure?" } %></td>
+</tr>
