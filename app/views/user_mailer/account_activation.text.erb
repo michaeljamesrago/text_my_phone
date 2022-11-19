@@ -1,5 +1,7 @@
 Hi <%= @user.name %>,
 
-Welcome to TextMyPhone! Click on the link below to activate your account:
+Welcome to TextMyPhone! To activate your account, follow the link below.
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+https://text-my-phone.herokuapp.com//account_activations/<%= @user.activation_token %>/edit?email=<%= @user.email %>
