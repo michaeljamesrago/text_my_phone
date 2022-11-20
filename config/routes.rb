@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'phone_number_verifications/new'
   root "sessions#new"
   get "sessions/new"
   get "/signup", to: "users#new"
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
     end
   end
   resources :account_activations, only: [:edit]
+  resources :phone_number_verifications, only: [:new, :update]
 end

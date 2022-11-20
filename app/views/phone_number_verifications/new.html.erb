@@ -1,0 +1,6 @@
+<h3>PhoneNumberVerifications</h3>
+<%= form_with(url: phone_number_verification_path(@phone_number.id), method: "patch") do |f| %>
+  <%= f.label :code, "Enter verification code:" %>
+  <%= f.text_field :code %>
+  <%= f.submit "Submit" %>
+<% end %>

@@ -10,7 +10,7 @@ class PhoneNumbersController < ApplicationController
     @phone_number = @user.phone_numbers.build(phone_number_params)
     if @phone_number.save
       flash[:success] = "New number saved. Please verify."
-      redirect_to current_user
+      redirect_to new_phone_number_verification_path(id: @phone_number.reload.id)
     else
       render 'new', status: :unprocessable_entity
     end
