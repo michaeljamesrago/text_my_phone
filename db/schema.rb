@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_010146) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_20_195056) do
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_010146) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "verification_digest"
     t.index ["number"], name: "index_phone_numbers_on_number", unique: true
     t.index ["user_id"], name: "index_phone_numbers_on_user_id"
   end
@@ -39,7 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_010146) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.boolean "admin"
-    t.string "verification_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

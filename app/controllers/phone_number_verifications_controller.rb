@@ -5,9 +5,9 @@ class PhoneNumberVerificationsController < ApplicationController
 
   def update
     @phone_number = PhoneNumber.find_by(id: params[:id])
-    if params[:code] == "12345"
-      flash[:success] = "Phone Number Verified"
+    if PhoneNumber.digest(params[:code]) == @phone_number.verification_digest
       @phone_number.toggle!(:verified)
+      flash[:success] = "Phone Number Verified"
       redirect_to user_phone_number_path(current_user, @phone_number)
     else
       flash[:danger] = "Code entered is invalid"
