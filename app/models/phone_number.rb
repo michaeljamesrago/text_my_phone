@@ -27,6 +27,16 @@ class PhoneNumber < ApplicationRecord
     )
   end
 
+  def send_sms(body)
+    client = Twilio::REST::Client.new
+    res = client.messages.create(
+      from: "+15344447426",
+      body: body,
+      to: number
+    )
+    puts res
+  end
+
   def verify
     toggle!(:verified)
   end
