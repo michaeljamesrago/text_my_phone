@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    add_breadcrumb(@user.name, @user)
   end
 
   def create

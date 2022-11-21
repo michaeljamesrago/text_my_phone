@@ -20,6 +20,8 @@ class PhoneNumbersController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     if @phone_number = @user.phone_numbers.find_by(id: params[:id])
+      add_breadcrumb(@user.name, user_path(@user))
+      add_breadcrumb(@phone_number.number, user_phone_number_path(@user, @phone_number))
       @messages = @phone_number.messages
     else
       flash[:warning] = "Either this phone number does not exist or you are not authorized to view it."

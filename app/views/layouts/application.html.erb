@@ -59,6 +59,11 @@
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <%= render @breadcrumbs %>
+        </ol>
+      </nav>
       <%= yield %>
     </div>
     <div>
