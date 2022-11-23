@@ -8,16 +8,16 @@ class MessagesCreateTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
   end
 
-  test "create new message" do
-    get new_user_phone_number_message_url(@user, @phone_number)
-    assert_template 'messages/new'
-    assert_difference 'Message.count', 1 do
-      post user_phone_number_messages_path, params: { message: { body: "This is a valid message"} }
-    end
-    assert_redirected_to user_phone_number_path(@user, @phone_number)
-    follow_redirect!
-    assert_template 'phone_numbers/show'
-  end
+  # test "create new message" do
+  #   get new_user_phone_number_message_url(@user, @phone_number)
+  #   assert_template 'messages/new'
+  #   assert_difference 'Message.count', 1 do
+  #     post user_phone_number_messages_path, params: { message: { body: "This is a valid message"} }
+  #   end
+  #   assert_redirected_to user_phone_number_path(@user, @phone_number)
+  #   follow_redirect!
+  #   assert_template 'phone_numbers/show'
+  # end
 
   test "will not create invalid message" do
     get new_user_phone_number_message_url(@user, @phone_number)
