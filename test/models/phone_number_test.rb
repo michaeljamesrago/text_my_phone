@@ -3,7 +3,7 @@ require "test_helper"
 class PhoneNumberTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    @phone_number = @user.phone_numbers.build(number: "13176051444")
+    @phone_number = @user.phone_numbers.build(number: "3176051444")
   end
 
   test "should be valid" do

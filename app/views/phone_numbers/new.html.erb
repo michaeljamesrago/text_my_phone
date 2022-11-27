@@ -1,3 +1,4 @@
+<h3>Enter a valid 10-digit US or Canadian phone number.</h3>
 <%= form_with model: [@user, @phone_number] do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="container my-3">
@@ -6,7 +7,7 @@
         <%= f.label :number, "Number", class: "col-form-label" %>
       </div>
       <div class="col-sm-4 mb-4">
-        <%= f.telephone_field :number, class: "form-control" %>
+        <%= f.telephone_field :number, class: "form-control", value: @phone_number.number ? @phone_number.number.gsub(/\+1/, '') : '' %>
       </div>
     </div>
     <div>

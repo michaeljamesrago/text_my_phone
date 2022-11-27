@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'phone_number_verifications/new'
   root "sessions#new"
   get "sessions/new"
   get "/signup", to: "users#new"

@@ -4,7 +4,11 @@
       <div class="h3">Messages</div>
     </div>
     <div class="col text-end">
-      <%= link_to "Send new message", new_user_phone_number_message_path(@user, @phone_number), class: "btn btn-primary" %>
+      <% if @phone_number.verified? %>
+        <%= link_to "Send new message", new_user_phone_number_message_path(@user, @phone_number), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Verify this number", new_phone_number_verification_path(id: @phone_number.id), class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

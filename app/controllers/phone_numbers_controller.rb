@@ -8,7 +8,7 @@ class PhoneNumbersController < ApplicationController
   def create
     @phone_number = @user.phone_numbers.build(phone_number_params)
     if @phone_number.save
-      @phone_number.send_verification_text
+      @phone_number.send_verification_text if ENV['RAILS_ENV'] == 'production'
       flash[:success] = "You will receive a verification code via SMS message. Please enter it here."
       redirect_to new_phone_number_verification_path(id: @phone_number.reload.id)
     else

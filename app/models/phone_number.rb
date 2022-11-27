@@ -1,12 +1,19 @@
 class PhoneNumber < ApplicationRecord
   attr_accessor :verification_code
+  before_validation :format_number, on: :create
   before_create :create_verification_digest
+
   belongs_to :user
   has_many :messages, dependent: :destroy
-  validates :number, presence: true, uniqueness: true
+
+  VALID_PHONE_NUMBER_REGEX = /\A\+1[0-9]{10}\z/
+  validates :number, presence: true, uniqueness: true,
+                     format: { with: VALID_PHONE_NUMBER_REGEX }
 
   def PhoneNumber.new_verification_code
-    6.times.map{rand(10)}.join
+    code = 6.times.map{rand(10)}.join
+    puts "code: #{code}"
+    code
   end
 
   def PhoneNumber.digest(code)
@@ -38,5 +45,9 @@ class PhoneNumber < ApplicationRecord
 
   def verify
     toggle!(:verified)
+  end
+
+  def format_number
+    self.number = number.gsub(/\D/, '').prepend('+1')
   end
 end
