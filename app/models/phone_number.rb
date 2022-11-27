@@ -2,7 +2,7 @@ class PhoneNumber < ApplicationRecord
   attr_accessor :verification_code
   before_create :create_verification_digest
   belongs_to :user
-  has_many :messages
+  has_many :messages, dependent: :destroy
   validates :number, presence: true, uniqueness: true
 
   def PhoneNumber.new_verification_code
