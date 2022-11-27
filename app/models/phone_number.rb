@@ -21,7 +21,7 @@ class PhoneNumber < ApplicationRecord
   def send_verification_text
     client = Twilio::REST::Client.new
     client.messages.create(
-      from: "+15344447426",
+      from: ENV['TWILIO_FROM_NUMBER'],
       body: "Hello! Your TextMyPhone verification code is #{verification_code}",
       to: number
     )
@@ -29,12 +29,11 @@ class PhoneNumber < ApplicationRecord
 
   def send_sms(body)
     client = Twilio::REST::Client.new
-    res = client.messages.create(
-      from: "+15344447426",
+    client.messages.create(
+      from: ENV['TWILIO_FROM_NUMBER'],
       body: body,
       to: number
     )
-    puts res
   end
 
   def verify
