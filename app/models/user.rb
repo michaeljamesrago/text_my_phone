@@ -27,7 +27,7 @@ class User < ApplicationRecord
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
     BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
+    password = BCrypt::Password.create(string, cost: cost)
   end
 
   # Returns a random token
@@ -50,6 +50,7 @@ class User < ApplicationRecord
 
   def create_activation_digest
     self.activation_token = User.new_token
+    puts "activation token: #{activation_token}"
     self.activation_digest = User.digest(activation_token)
   end
 
