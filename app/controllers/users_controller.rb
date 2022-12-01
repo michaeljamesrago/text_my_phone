@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorized_user, only: [:show]
+  before_action :authorized_user, only: [:show, :edit, :update, :destroy]
 
   def index
     unless current_user.admin?
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     add_breadcrumb(@user.name, @user)
   end
 
@@ -29,10 +28,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit', status: :unprocessable_entity
+    end
+  end
+
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to users_path, status: :see_other
+    redirect_to login_path, status: :see_other
   end
 
   private

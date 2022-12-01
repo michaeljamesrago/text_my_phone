@@ -1,0 +1,16 @@
+<div class="container px-5">
+  <div class="h2 my-4">Edit your account</div>
+  <%= form_with(model: @user) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <div class="row align-items-start">
+      <%= f.label :name, "Name", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-4 mb-4">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div>
+      <%= f.submit "Edit your account", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <p class="h6 my-4"><%= link_to "Delete your account", user_path(@user), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %></p>
+</div>
