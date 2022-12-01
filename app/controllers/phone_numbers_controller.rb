@@ -26,6 +26,16 @@ class PhoneNumbersController < ApplicationController
     end
   end
 
+  def destroy
+    if @phone_number = @user.phone_numbers.find_by(id: params[:id])
+      @phone_number.destroy
+      redirect_to @user, status: :see_other
+    else
+      flash[:warning] = "Either this phone number does not exist or you are not authorized to view it."
+      redirect_to @user
+    end
+  end
+
   private
 
     def phone_number_params
